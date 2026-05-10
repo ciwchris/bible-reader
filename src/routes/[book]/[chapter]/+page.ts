@@ -16,19 +16,11 @@ export const load: PageLoad = async ({ params, fetch }) => {
 		throw error(404, 'Chapter not found');
 	}
 
-	let verses: Verse[] = [];
-	try {
-		const res = await fetch(`https://bible-api.com/${book.apiName}+${chapter}?translation=web`);
-		if (res.ok) {
-			const data = await res.json();
-			verses = (data.verses ?? []).map((v: { verse: number; text: string }) => ({
-				verse: v.verse,
-				text: v.text.trim()
-			}));
-		}
-	} catch {
-		// leave verses empty; component shows a fallback
-	}
+	const res = await fetch(`/bible/${book.slug}.json`);
+	if (!res.ok) throw error(500, 'Bible data unavailable');
+
+	const data: Record<string, Verse[]> = await res.json();
+	const verses = data[chapter] ?? [];
 
 	return { book, chapter, verses };
 };

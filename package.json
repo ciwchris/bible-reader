@@ -14,7 +14,8 @@
 		"test:coverage": "vitest run --coverage",
 		"test:e2e": "playwright test",
 		"test:e2e:headed": "playwright test --headed",
-		"test:e2e:install": "playwright install chromium"
+		"test:e2e:install": "playwright install chromium",
+		"download-bible": "tsx scripts/download-bible.ts"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.55.0",
@@ -29,6 +30,7 @@
 		"svelte-check": "^4.4.2",
 		"typescript": "^5.9.3",
 		"vite": "^7.3.1",
+		"vite-plugin-pwa": "^1.3.0",
 		"vitest": "^3.2.4"
 	},
 	"dependencies": {
