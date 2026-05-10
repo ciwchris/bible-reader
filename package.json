@@ -1,0 +1,37 @@
+{
+	"name": "shopping-list",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"start": "node --import tsx src/server/index.ts",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:coverage": "vitest run --coverage",
+		"test:e2e": "playwright test",
+		"test:e2e:headed": "playwright test --headed",
+		"test:e2e:install": "playwright install chromium"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.55.0",
+		"@sveltejs/adapter-node": "^5.5.4",
+		"@sveltejs/kit": "^2.59.1",
+		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"@testing-library/svelte": "^5.2.8",
+		"@vitest/coverage-v8": "^3.2.4",
+		"jsdom": "^26.1.0",
+		"lighthouse": "^13.1.0",
+		"svelte": "^5.54.0",
+		"svelte-check": "^4.4.2",
+		"typescript": "^5.9.3",
+		"vite": "^7.3.1",
+		"vitest": "^3.2.4"
+	},
+	"dependencies": {
+		"tsx": "^4.19.0"
+	}
+}
