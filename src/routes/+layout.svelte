@@ -1,14 +1,30 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { afterNavigate, goto } from '$app/navigation';
 	import { base } from '$app/paths';
 	import { theme } from '$lib/theme.svelte.js';
 
 	let { children } = $props();
 
+	const LAST_PATH_KEY = 'bible-last-path';
+
 	onMount(() => {
 		theme.init();
+
+		const saved = localStorage.getItem(LAST_PATH_KEY);
+		if (saved) {
+			goto(saved, { replaceState: true });
+		}
+
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker.register(`${base}/sw.js`, { scope: `${base}/` });
+		}
+	});
+
+	afterNavigate(({ to }) => {
+		// Don't save the home route — it's the default, no need to restore it
+		if (to?.route.id !== '/' && to?.url.pathname) {
+			localStorage.setItem(LAST_PATH_KEY, to.url.pathname);
 		}
 	});
 </script>
