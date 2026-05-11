@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { base } from '$app/paths';
 	import { theme } from '$lib/theme.svelte.js';
 	import type { PageData } from './$types.js';
 
@@ -38,8 +39,8 @@
 	}
 	function onTouchEnd(e: TouchEvent) {
 		const dx = e.changedTouches[0].clientX - touchStartX;
-		if (dx > 60 && prevChapter) goto(`/${book.slug}/${prevChapter}`);
-		else if (dx < -60 && nextChapter) goto(`/${book.slug}/${nextChapter}`);
+		if (dx > 60 && prevChapter) goto(`${base}/${book.slug}/${prevChapter}`);
+		else if (dx < -60 && nextChapter) goto(`${base}/${book.slug}/${nextChapter}`);
 	}
 
 	const dropCapLetter = $derived(verses[0]?.text?.[0] ?? '');
@@ -55,7 +56,7 @@
 >
 	<!-- Top bar -->
 	<div class="top-bar" style="background: {theme.c.bg};">
-		<a href="/{book.slug}" class="back" style="color: {theme.c.text};">
+		<a href="{base}/{book.slug}" class="back" style="color: {theme.c.text};">
 			<svg width="18" height="18" viewBox="0 0 16 16" fill="none">
 				<path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>
@@ -111,7 +112,7 @@
 		<div class="nav-bar">
 			{#if prevChapter}
 				<a
-					href="/{book.slug}/{prevChapter}"
+					href="{base}/{book.slug}/{prevChapter}"
 					class="chip"
 					style="border: 1px solid {theme.c.line}; color: {theme.c.text}; --chip-hover: {theme.c.surface};"
 				>
@@ -133,7 +134,7 @@
 
 			{#if nextChapter}
 				<a
-					href="/{book.slug}/{nextChapter}"
+					href="{base}/{book.slug}/{nextChapter}"
 					class="chip"
 					style="border: 1px solid {theme.c.line}; color: {theme.c.text}; --chip-hover: {theme.c.surface};"
 				>

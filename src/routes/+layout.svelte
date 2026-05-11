@@ -1,20 +1,22 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 	import { theme } from '$lib/theme.svelte.js';
 
 	let { children } = $props();
 
-	onMount(() => theme.init());
+	onMount(() => {
+		theme.init();
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register(`${base}/sw.js`, { scope: `${base}/` });
+		}
+	});
 </script>
 
 <svelte:head>
 	<title>Bible Reader</title>
 	<meta name="description" content="Read the World English Bible on any device" />
 	<meta name="theme-color" content={theme.name === 'ivory' ? '#FAF8F4' : '#15171A'} />
-	<link rel="manifest" href="/manifest.webmanifest" />
-	<link rel="icon" href="/favicon.ico" sizes="any" />
-	<link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 	<meta name="apple-mobile-web-app-title" content="Bible" />

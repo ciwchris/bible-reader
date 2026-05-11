@@ -2,11 +2,14 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const base = process.env.BASE_PATH ?? '';
+
 export default defineConfig({
 	plugins: [
 		sveltekit(),
 		VitePWA({
 			registerType: 'autoUpdate',
+			injectRegister: null,
 			manifest: {
 				name: 'Bible Reader',
 				short_name: 'Bible',
@@ -14,27 +17,27 @@ export default defineConfig({
 				theme_color: '#FAF8F4',
 				background_color: '#FAF8F4',
 				display: 'standalone',
-				start_url: '/',
-				scope: '/',
+				start_url: `${base}/`,
+				scope: `${base}/`,
 				icons: [
 					{
-						src: '/icons/icon-192.png',
+						src: `${base}/icons/icon-192.png`,
 						sizes: '192x192',
 						type: 'image/png',
 					},
 					{
-						src: '/icons/icon-512.png',
+						src: `${base}/icons/icon-512.png`,
 						sizes: '512x512',
 						type: 'image/png',
 					},
 					{
-						src: '/icons/icon-maskable-192.png',
+						src: `${base}/icons/icon-maskable-192.png`,
 						sizes: '192x192',
 						type: 'image/png',
 						purpose: 'maskable',
 					},
 					{
-						src: '/icons/icon-maskable-512.png',
+						src: `${base}/icons/icon-maskable-512.png`,
 						sizes: '512x512',
 						type: 'image/png',
 						purpose: 'maskable',

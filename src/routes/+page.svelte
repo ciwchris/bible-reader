@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { OT, NT } from '$lib/bible.js';
 	import { theme } from '$lib/theme.svelte.js';
 	import type { Book } from '$lib/bible.js';
@@ -12,7 +13,7 @@
 
 {#snippet BookRow(book: Book, isLast: boolean)}
 	<a
-		href="/{book.slug}"
+		href="{base}/{book.slug}"
 		class="row"
 		style="
 			border-bottom: {isLast ? 'none' : `1px solid ${theme.c.line}`};

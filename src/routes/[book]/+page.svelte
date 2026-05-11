@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 	import { bookBySlug } from '$lib/bible.js';
 	import { theme } from '$lib/theme.svelte.js';
@@ -10,7 +11,7 @@
 {#if book}
 	<div class="screen">
 		<div class="top-bar" style="background: {theme.c.bg};">
-			<a href="/" class="back" style="color: {theme.c.text};">
+			<a href="{base}/" class="back" style="color: {theme.c.text};">
 				<svg width="18" height="18" viewBox="0 0 16 16" fill="none">
 					<path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>
@@ -28,7 +29,7 @@
 		<div class="grid">
 			{#each chapters as n}
 				<a
-					href="/{book.slug}/{n}"
+					href="{base}/{book.slug}/{n}"
 					class="tile"
 					style="
 						background: {theme.c.surface};
@@ -44,7 +45,7 @@
 	</div>
 {:else}
 	<div class="not-found" style="color: {theme.c.text}; padding: 24px; font-family: 'Geist', system-ui, sans-serif;">
-		<a href="/">← The Bible</a>
+		<a href="{base}/">← The Bible</a>
 		<p>Book not found.</p>
 	</div>
 {/if}

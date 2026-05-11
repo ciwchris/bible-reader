@@ -1,4 +1,5 @@
 import { error } from '@sveltejs/kit';
+import { assets } from '$app/paths';
 import { bookBySlug } from '$lib/bible.js';
 import type { PageLoad } from './$types.js';
 
@@ -16,7 +17,7 @@ export const load: PageLoad = async ({ params, fetch }) => {
 		throw error(404, 'Chapter not found');
 	}
 
-	const res = await fetch(`/bible/${book.slug}.json`);
+	const res = await fetch(`${assets}/bible/${book.slug}.json`);
 	if (!res.ok) throw error(500, 'Bible data unavailable');
 
 	const data: Record<string, Verse[]> = await res.json();
