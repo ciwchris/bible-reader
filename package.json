@@ -1,5 +1,5 @@
 {
-	"name": "shopping-list",
+	"name": "bible-reader",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
@@ -7,7 +7,6 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"start": "node --import tsx src/server/index.ts",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"test": "vitest run",
 		"test:watch": "vitest",
@@ -19,9 +18,10 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.55.0",
-		"@sveltejs/adapter-node": "^5.5.4",
+		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/kit": "^2.59.1",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"@testing-library/jest-dom": "^6.9.1",
 		"@testing-library/svelte": "^5.2.8",
 		"@vitest/coverage-v8": "^3.2.4",
 		"jsdom": "^26.1.0",

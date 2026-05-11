@@ -17,7 +17,7 @@ A progressive web app (PWA) for reading the [World English Bible (WEB)](https://
 - [SvelteKit](https://kit.svelte.dev/) with Svelte 5 runes
 - [TypeScript](https://www.typescriptlang.org/)
 - [`vite-plugin-pwa`](https://vite-pwa-org.netlify.app/) + Workbox for service worker and precaching
-- [`@sveltejs/adapter-node`](https://kit.svelte.dev/docs/adapter-node) for SSR
+- [`@sveltejs/adapter-static`](https://kit.svelte.dev/docs/adapter-static) for static/SPA output, deployed via GitHub Pages
 
 ## Routes
 
@@ -45,7 +45,6 @@ The app will be available at `http://localhost:5173`.
 | `npm run dev` | Start the development server |
 | `npm run build` | Production build (also generates service worker) |
 | `npm run preview` | Preview the production build locally |
-| `npm start` | Run the production Node.js server |
 | `npm run check` | TypeScript + Svelte type checking |
 | `npm test` | Run unit tests (Vitest) |
 | `npm run test:watch` | Run unit tests in watch mode |
